@@ -1,0 +1,61 @@
+
+<%if @user.errors.any?%>
+  <div class="error-messages">
+    <h2>Errors:</h2>
+    <ul>
+        <% @user.errors.full_messages.each do |err| %>
+          <li><%= err %></li>
+          
+        <% end %>
+    </ul>
+  </div>
+<% end %>
+<div style="display: flex; flex-direction: row; gap: 60px;">
+
+  <%= form_with model: @user, local: true do |form| %>
+
+    <h2>Create User</h2>
+
+    <div style="display: flex: 1;">
+      <div>
+        <%= form.label :username, "Username" %><br>
+        <%= form.text_field :username, placeholder: "Hansruedi" %>
+      </div>
+
+      <div>
+        <%= form.label :email, "Email" %><br>
+        <%= form.email_field :email, placeholder: "Hansruedi@example.com"%>
+      </div>
+
+      <div>
+        <%= form.label :password, "Password" %><br>
+        <%= form.password_field :password, placeholder: "********"%>
+      </div>
+
+      <div class="actions">
+        <%= form.submit "Create User" %>
+      </div>
+      
+    </div>
+
+  <% end %>
+
+  <div style="display: flex: 1;">
+    <h2>All Users</h2>
+    <ul>
+      <% @users.each do |user| %>
+        <li>
+          <strong><%= user.username %></strong> (<%= user.email %>)
+          <%= button_to "Edit", edit_user_path(user), method: :get, class: "btn" %>
+          <%= button_to "Delete", user_path(user), method: :delete, class: "btn", data: { confirm: "Are you sure?"} %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+</div>
+
+
+
+  
+

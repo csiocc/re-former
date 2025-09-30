@@ -1,0 +1,20 @@
+<%= form_with model: @user, local: true do |form| %>
+  <div>
+    <%= form.label :username, "Username" %><br>
+    <%= form.text_field :username, placeholder: "Hansruedi", required: true %>
+  </div>
+
+  <div>
+    <%= form.label :email, "Email" %><br>
+    <%= form.email_field :email, placeholder: "Hansruedi@example.com", required: true %>
+  </div>
+
+  <div>
+    <%= form.label :password, "Password" %><br>
+    <%= form.password_field :password, placeholder: "********", required: true %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Update User" %>
+  </div>
+<% end %>
